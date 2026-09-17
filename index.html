@@ -3,158 +3,603 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QA Roadmap</title>
+<title>My QA Project Roadmap</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #eef2ff, #f8fafc);
-    color: #172033;
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:#172033;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 50px 25px;
+header{
+    text-align:center;
+    padding:55px 20px 35px;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 40px;
+header h1{
+    font-size:48px;
+    margin:0 0 12px;
 }
 
-.header h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+header p{
+    font-size:18px;
+    color:#64748b;
 }
 
-.header p {
-    color: #64748b;
-    font-size: 17px;
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
 }
 
-.roadmap {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
+.flow{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+.card{
+    background:white;
+    border-radius:22px;
+    padding:25px;
+    min-height:240px;
+    box-shadow:0 10px 30px rgba(15,23,42,.09);
+    border:1px solid #e2e8f0;
+    cursor:pointer;
+    transition:.3s;
+    animation:fade .7s ease;
 }
 
-.number {
-    background: #172033;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin-bottom: 15px;
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(15,23,42,.15);
 }
 
-.card h2 {
-    margin: 0 0 10px;
+.number{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#172033;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:18px;
 }
 
-.card p {
-    color: #64748b;
-    line-height: 1.6;
+.icon{
+    font-size:35px;
+    margin:15px 0 5px;
 }
 
-.principle {
-    margin-top: 30px;
-    background: #172033;
-    color: white;
-    padding: 30px;
-    border-radius: 18px;
+.card h2{
+    font-size:22px;
+    margin:8px 0;
 }
 
-.principle p {
-    line-height: 1.7;
-    color: #dbe4f0;
+.card p{
+    color:#64748b;
+    line-height:1.6;
+}
+
+.click{
+    display:inline-block;
+    margin-top:12px;
+    padding:7px 12px;
+    border-radius:20px;
+    background:#eef2ff;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.section{
+    margin-top:45px;
+}
+
+.section h2{
+    text-align:center;
+    font-size:28px;
+}
+
+.mindmap{
+    background:white;
+    border-radius:22px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(15,23,42,.08);
+    text-align:center;
+    line-height:2.5;
+}
+
+.node{
+    display:inline-block;
+    background:#172033;
+    color:white;
+    padding:10px 15px;
+    margin:6px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.toolbox{
+    background:#172033;
+    color:white;
+    border-radius:22px;
+    padding:30px;
+}
+
+.tools{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
+
+.tool{
+    background:white;
+    color:#172033;
+    padding:10px 15px;
+    border-radius:12px;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.65);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:10;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    background:white;
+    max-width:650px;
+    width:100%;
+    max-height:85vh;
+    overflow:auto;
+    border-radius:24px;
+    padding:30px;
+}
+
+.close{
+    float:right;
+    border:0;
+    background:#eef2ff;
+    padding:8px 12px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.modal-box li{
+    margin:10px 0;
+    color:#475569;
+}
+
+.output{
+    background:#eef2ff;
+    padding:15px;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+.example{
+    background:#f8fafc;
+    padding:15px;
+    border-radius:12px;
+    margin-top:15px;
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#94a3b8;
+}
+
+@keyframes fade{
+    from{opacity:0;transform:translateY(20px)}
+    to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:600px){
+    header h1{font-size:34px}
 }
 </style>
 </head>
 
 <body>
 
+<header>
+    <h1>My QA Project Roadmap</h1>
+    <p>Complete End-to-End Software Quality Assurance Workflow</p>
+</header>
+
 <div class="container">
 
-<div class="header">
-<h1>My QA Project Roadmap</h1>
-<p>A practical end-to-end Software Quality Assurance workflow</p>
+<div class="flow" id="roadmap"></div>
+
+<div class="section">
+<h2>🧠 QA Mind Map</h2>
+
+<div class="mindmap">
+
+<span class="node">🚀 Project Kickoff</span> →
+<span class="node">🤝 QA Kickoff</span> →
+<span class="node">❓ Questions</span> →
+<span class="node">📄 SOW</span> →
+<span class="node">📋 Requirements</span> →
+<span class="node">🧭 QA Plan</span> →
+<span class="node">🧪 Test Preparation</span> →
+<span class="node">💻 Alpha Testing</span> →
+<span class="node">🧑‍🤝‍🧑 Beta Testing</span> →
+<span class="node">🔎 Complete Testing</span> →
+<span class="node">🐞 Defect Verification</span> →
+<span class="node">📊 QA Report</span> →
+<span class="node">🚢 Production</span> →
+<span class="node">♻️ Continuous QA</span>
+
+</div>
 </div>
 
-<div class="roadmap">
+<div class="section">
 
-<div class="card">
-<div class="number">1</div>
-<h2>Project Kickoff</h2>
-<p>QA kickoff, project understanding, questions and concerns.</p>
+<div class="toolbox">
+
+<h2>🧰 QA Toolkit</h2>
+
+<div class="tools">
+<span class="tool">Manual Testing</span>
+<span class="tool">Test Cases</span>
+<span class="tool">Regression Testing</span>
+<span class="tool">Smoke Testing</span>
+<span class="tool">API Testing</span>
+<span class="tool">Playwright</span>
+<span class="tool">Selenium</span>
+<span class="tool">Katalon</span>
+<span class="tool">Tosca</span>
+<span class="tool">mabl</span>
+<span class="tool">Postman</span>
+<span class="tool">JMeter</span>
+<span class="tool">Automation</span>
+<span class="tool">CI/CD</span>
 </div>
 
-<div class="card">
-<div class="number">2</div>
-<h2>Requirements</h2>
-<p>Review SOW, user stories and use cases. Clarify expected behavior.</p>
 </div>
-
-<div class="card">
-<div class="number">3</div>
-<h2>QA Design</h2>
-<p>Create the test plan, test cases, test data and environment needs.</p>
-</div>
-
-<div class="card">
-<div class="number">4</div>
-<h2>Build Intake</h2>
-<p>Review release notes, perform smoke testing and focus on risk areas.</p>
-</div>
-
-<div class="card">
-<div class="number">5</div>
-<h2>QA Execution</h2>
-<p>Test major features, UI, API, automation and regression coverage.</p>
-</div>
-
-<div class="card">
-<div class="number">6</div>
-<h2>Defect Loop</h2>
-<p>Report bugs, verify fixes through retesting and perform regression testing.</p>
-</div>
-
-<div class="card">
-<div class="number">7</div>
-<h2>Beta & Final QA</h2>
-<p>Complete final testing, reporting and production-readiness checks.</p>
-</div>
-
-<div class="card">
-<div class="number">8</div>
-<h2>Production</h2>
-<p>Perform production smoke testing and continue QA improvements.</p>
 </div>
 
 </div>
 
-<div class="principle">
-<h2>QA Principle</h2>
-<p>
-Understand requirements first → create traceable coverage →
-test highest-risk areas first → verify fixes →
-report factual results → carry lessons into the next sprint.
-</p>
+<footer>
+QA Roadmap • From Requirements to Production
+</footer>
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeModal()">✕</button>
+
+<div id="details"></div>
+
 </div>
 
 </div>
+
+<script>
+
+const steps=[
+
+{
+icon:"🚀",
+title:"Project Kickoff",
+desc:"Understand the project, scope and QA responsibilities.",
+work:[
+"Attend project kickoff",
+"Understand business goals",
+"Identify project scope",
+"Identify initial risks",
+"Record questions and concerns"
+],
+output:"Project understanding + initial QA risk list.",
+example:"A new web application starts development. QA first understands what the product does, who will use it and what is included in the release."
+},
+
+{
+icon:"🤝",
+title:"QA Kickoff",
+desc:"Establish the QA process and communication.",
+work:[
+"Define QA responsibilities",
+"Understand testing timeline",
+"Confirm environments",
+"Confirm defect reporting process",
+"Discuss entry and exit criteria"
+],
+output:"QA strategy + communication process.",
+example:"QA agrees with developers and product owners on how bugs will be reported, verified and closed."
+},
+
+{
+icon:"❓",
+title:"Questions & Concerns",
+desc:"Remove ambiguity before testing begins.",
+work:[
+"Review unclear requirements",
+"Identify missing information",
+"Ask edge-case questions",
+"Identify dependencies",
+"Document decisions"
+],
+output:"Questions and decisions log.",
+example:"A payment requirement does not explain what happens when a card is declined. QA raises the question before test cases are finalized."
+},
+
+{
+icon:"📄",
+title:"SOW",
+desc:"Understand the complete Statement of Work.",
+work:[
+"Review project deliverables",
+"Understand scope",
+"Review acceptance expectations",
+"Identify exclusions",
+"Map deliverables to QA coverage"
+],
+output:"SOW coverage understanding.",
+example:"QA checks every agreed project deliverable and ensures that each one can be tested."
+},
+
+{
+icon:"📋",
+title:"Requirements",
+desc:"Convert requirements into testable scenarios.",
+work:[
+"Review user stories",
+"Review use cases",
+"Check acceptance criteria",
+"Identify positive scenarios",
+"Identify negative scenarios",
+"Identify boundary cases"
+],
+output:"Requirement-to-test traceability.",
+example:"For login, QA covers valid login, invalid password, empty fields, locked account and session behavior."
+},
+
+{
+icon:"🧭",
+title:"QA Plan",
+desc:"Define the complete testing strategy.",
+work:[
+"Define test scope",
+"Define test types",
+"Define test environments",
+"Plan test data",
+"Identify risks",
+"Define schedule"
+],
+output:"QA Test Plan.",
+example:"The QA plan includes functional, regression, API, automation and browser testing."
+},
+
+{
+icon:"🧪",
+title:"Test Preparation",
+desc:"Prepare everything required for execution.",
+work:[
+"Create test cases",
+"Prepare test data",
+"Prepare test accounts",
+"Prepare environments",
+"Prepare API collections",
+"Identify automation candidates"
+],
+output:"Ready-to-test environment and test suite.",
+example:"Before testing checkout, QA prepares customer accounts, products, payment test data and required API collections."
+},
+
+{
+icon:"💻",
+title:"Alpha / Frontend Testing",
+desc:"Test the early build thoroughly.",
+work:[
+"Perform functional testing",
+"Test UI",
+"Test navigation",
+"Test validations",
+"Test responsive behavior",
+"Log defects"
+],
+output:"Alpha execution results + defects.",
+example:"QA discovers that a required field accepts invalid data and reports the defect with screenshots and reproduction steps."
+},
+
+{
+icon:"🧑‍🤝‍🧑",
+title:"Beta Testing",
+desc:"Validate the integrated product with broader scenarios.",
+work:[
+"Run end-to-end scenarios",
+"Perform regression testing",
+"Test integrations",
+"Test real-world workflows",
+"Focus on high-risk features"
+],
+output:"Beta results + defect status.",
+example:"QA tests the complete journey from product selection to payment confirmation and email notification."
+},
+
+{
+icon:"🔎",
+title:"Complete Testing",
+desc:"Execute the agreed QA coverage before release.",
+work:[
+"Functional testing",
+"Regression testing",
+"API testing",
+"Automation testing",
+"Browser testing",
+"Device testing",
+"Performance checks where required"
+],
+output:"Complete QA execution summary.",
+example:"After major fixes, QA runs the full regression suite to confirm existing features still work."
+},
+
+{
+icon:"🐞",
+title:"Defect Verification",
+desc:"Verify fixes and protect against regression.",
+work:[
+"Retest fixed defects",
+"Verify expected behavior",
+"Perform targeted regression",
+"Update defect status",
+"Confirm evidence"
+],
+output:"Verified defect list.",
+example:"A checkout bug is fixed. QA retests checkout and then checks related payment scenarios."
+},
+
+{
+icon:"📊",
+title:"QA Report",
+desc:"Communicate factual QA results to stakeholders.",
+work:[
+"Summarize test execution",
+"Summarize defects",
+"Report blockers",
+"Report risks",
+"Document coverage",
+"Share release status"
+],
+output:"QA report / release summary.",
+example:"Stakeholders receive total tests executed, passed/failed tests, open defects, risks and known limitations."
+},
+
+{
+icon:"🚢",
+title:"Production",
+desc:"Protect the live release.",
+work:[
+"Perform production smoke testing",
+"Verify critical journeys",
+"Check deployment",
+"Verify important integrations",
+"Monitor initial issues"
+],
+output:"Production smoke result.",
+example:"After deployment, QA verifies login, search and checkout on the live production environment."
+},
+
+{
+icon:"♻️",
+title:"Continuous QA",
+desc:"Improve quality from one sprint to the next.",
+work:[
+"Review escaped defects",
+"Improve regression coverage",
+"Improve automation",
+"Update test cases",
+"Analyze recurring problems",
+"Carry lessons into the next sprint"
+],
+output:"Continuous QA improvement actions.",
+example:"A production defect becomes a new regression test so the same issue is less likely to return."
+}
+
+];
+
+const roadmap=document.getElementById("roadmap");
+
+steps.forEach((step,index)=>{
+
+const card=document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+
+<div class="number">${index+1}</div>
+
+<div class="icon">${step.icon}</div>
+
+<h2>${step.title}</h2>
+
+<p>${step.desc}</p>
+
+<span class="click">Click for QA Details →</span>
+
+`;
+
+card.onclick=()=>{
+
+document.getElementById("details").innerHTML=`
+
+<h1>${step.icon} ${step.title}</h1>
+
+<p>${step.desc}</p>
+
+<h3>What QA Does</h3>
+
+<ul>
+${step.work.map(item=>`<li>${item}</li>`).join("")}
+</ul>
+
+<div class="output">
+
+<strong>📦 Expected Output</strong>
+
+<p>${step.output}</p>
+
+</div>
+
+<div class="example">
+
+<strong>💡 Real-Life Project Example</strong>
+
+<p>${step.example}</p>
+
+</div>
+
+`;
+
+document.getElementById("modal").classList.add("show");
+
+};
+
+roadmap.appendChild(card);
+
+});
+
+function closeModal(){
+
+document.getElementById("modal").classList.remove("show");
+
+}
+
+window.onclick=function(event){
+
+if(event.target===document.getElementById("modal")){
+
+closeModal();
+
+}
+
+};
+
+</script>
 
 </body>
 </html>
