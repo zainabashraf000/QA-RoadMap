@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QA Roadmap</title>
 
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    color: #172033;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 25px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #64748b;
+    font-size: 17px;
+}
+
+.roadmap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.number {
+    background: #172033;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    margin: 0 0 10px;
+}
+
+.card p {
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.principle {
+    margin-top: 30px;
+    background: #172033;
+    color: white;
+    padding: 30px;
+    border-radius: 18px;
+}
+
+.principle p {
+    line-height: 1.7;
+    color: #dbe4f0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>My QA Project Roadmap</h1>
+<p>A practical end-to-end Software Quality Assurance workflow</p>
+</div>
+
+<div class="roadmap">
+
+<div class="card">
+<div class="number">1</div>
+<h2>Project Kickoff</h2>
+<p>QA kickoff, project understanding, questions and concerns.</p>
+</div>
+
+<div class="card">
+<div class="number">2</div>
+<h2>Requirements</h2>
+<p>Review SOW, user stories and use cases. Clarify expected behavior.</p>
+</div>
+
+<div class="card">
+<div class="number">3</div>
+<h2>QA Design</h2>
+<p>Create the test plan, test cases, test data and environment needs.</p>
+</div>
+
+<div class="card">
+<div class="number">4</div>
+<h2>Build Intake</h2>
+<p>Review release notes, perform smoke testing and focus on risk areas.</p>
+</div>
+
+<div class="card">
+<div class="number">5</div>
+<h2>QA Execution</h2>
+<p>Test major features, UI, API, automation and regression coverage.</p>
+</div>
+
+<div class="card">
+<div class="number">6</div>
+<h2>Defect Loop</h2>
+<p>Report bugs, verify fixes through retesting and perform regression testing.</p>
+</div>
+
+<div class="card">
+<div class="number">7</div>
+<h2>Beta & Final QA</h2>
+<p>Complete final testing, reporting and production-readiness checks.</p>
+</div>
+
+<div class="card">
+<div class="number">8</div>
+<h2>Production</h2>
+<p>Perform production smoke testing and continue QA improvements.</p>
+</div>
+
+</div>
+
+<div class="principle">
+<h2>QA Principle</h2>
+<p>
+Understand requirements first → create traceable coverage →
+test highest-risk areas first → verify fixes →
+report factual results → carry lessons into the next sprint.
+</p>
+</div>
+
+</div>
+
+</body>
+</html>
